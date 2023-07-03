@@ -1,29 +1,27 @@
 'use client'
 
+import useAPI from 'hooks/useAPI'
 import styles from './page.module.scss'
 import { useState } from 'react'
 
 const Home = () => {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState('')
+  const [handleFetch] = useAPI()
+
+  const fetchData = async () => {
+    const path = 'http://localhost:3000'
+    const res = await handleFetch(path, 'GET')
+    setData(res)
+  }
 
   return (
     <main className={styles.main}>
-      <p>{count}</p>
       <input
         type='button'
-        value='+'
-        onClick={() => setCount(count + 1)}
+        value='fetch Data'
+        onClick={fetchData}
       />
-      <input
-        type='button'
-        value='-'
-        onClick={() => setCount(count - 1)}
-      />
-      <input
-        type='button'
-        value='*'
-        onClick={() => setCount(count * count)}
-      />
+      <p>{data}</p>
     </main>
   )
 }
