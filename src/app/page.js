@@ -1,27 +1,36 @@
 'use client'
 
-import useAPI from 'hooks/useAPI'
-import styles from './page.module.scss'
 import { useState } from 'react'
 
-const Home = () => {
-  const [data, setData] = useState('')
-  const [handleFetch] = useAPI()
+import styles from './page.module.scss'
 
-  const fetchData = async () => {
-    const path = 'http://localhost:3000'
-    const res = await handleFetch(path, 'GET')
-    setData(res)
-  }
+const Home = () => {
+  const [navSelect, setNavSelect] = useState(0)
 
   return (
     <main className={styles.main}>
-      <input
-        type='button'
-        value='fetch Data'
-        onClick={fetchData}
-      />
-      <p>{data}</p>
+      <div className={styles.navContainer}>
+        <div
+          className={styles.leftNav}
+          onClick={() => setNavSelect(0)}
+        >
+          <h2 style={navSelect ? {} : { color: 'black' }}>
+            Sign In
+          </h2>
+        </div>
+        <div
+          className={styles.rightNav}
+          onClick={() => setNavSelect(1)}
+        >
+          <h2 style={navSelect ? { color: 'black' } : {}}>
+            Register
+          </h2>
+        </div>
+        <span
+          className={styles.navSelected}
+          style={navSelect ? { transform: 'translateX(100%)' } : {}}
+        />
+      </div>
     </main>
   )
 }
