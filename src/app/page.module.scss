@@ -5,37 +5,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.navContainer {
-  display: flex;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 2rem;
-  height: 4rem;
-  .navSelected {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    border-radius: 2rem;
-    background-color: rgba(235, 235, 235, 0.85);
-    transition: transform 0.3s;
-  }
-
-  div {
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    width: 15rem;
-    cursor: pointer;
-    h2 {
-      color: rgba(235, 235, 235, 0.65);
-      font-weight: 500;
-      padding: 1rem;
-      user-select: none;
-      &:hover {
-        transition: color 0.1s;
-        color: rgba(235, 235, 235, 0.90);
-      }
-    }
-  }
-}
