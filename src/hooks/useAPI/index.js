@@ -9,7 +9,6 @@ const useAPI = () => {
         }
 
         if (['POST', 'PUT'].includes(method)) {
-          console.log(method)
           res = await fetch(`${path}`, {
             method,
             headers: { 'Content-Type': 'application/json' },
