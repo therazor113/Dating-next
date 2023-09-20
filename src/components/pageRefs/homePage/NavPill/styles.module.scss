@@ -19,15 +19,15 @@
     justify-content: center;
     width: 15rem;
     cursor: pointer;
+    &:hover h2 {
+      transition: color 0.1s;
+      color: rgba(235, 235, 235, 0.90);
+    }
     h2 {
       color: rgba(235, 235, 235, 0.65);
       font-weight: 500;
       padding: 1rem;
       user-select: none;
-      &:hover {
-        transition: color 0.1s;
-        color: rgba(235, 235, 235, 0.90);
-      }
     }
   }
 }
