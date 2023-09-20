@@ -18,17 +18,14 @@ const RegisterCard = () => {
     <div className={classes.cardContainer}>
       <h2>Register</h2>
       <NameField
-        classes={classes}
         inputValue={inputValue}
         handleChange={handleChange}
       />
       <Passwordfield
-        classes={classes}
         inputValue={inputValue}
         handleChange={handleChange}
       />
       <RetypeField
-        classes={classes}
         inputValue={inputValue}
         handleChange={handleChange}
       />

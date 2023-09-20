@@ -17,12 +17,10 @@ const SignInCard = () => {
     <div className={classes.cardContainer}>
       <h2>Sign in</h2>
       <NameField
-        classes={classes}
         inputValue={inputValue}
         handleChange={handleChange}
       />
       <Passwordfield
-        classes={classes}
         inputValue={inputValue}
         handleChange={handleChange}
       />
