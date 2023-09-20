@@ -12,11 +12,13 @@ const Home = () => {
 
   return (
     <main className={classes.main}>
-      <HomeNavPill
-        navSelect={navSelect}
-        setNavSelect={setNavSelect}
-      />
-      {navSelect ? <RegisterCard /> : <SignInCard />}
+      <div className={classes.homeContainer}>
+        <HomeNavPill
+          navSelect={navSelect}
+          setNavSelect={setNavSelect}
+        />
+        {navSelect ? <RegisterCard /> : <SignInCard />}
+      </div>
     </main>
   )
 }
