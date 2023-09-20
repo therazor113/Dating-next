@@ -7,7 +7,12 @@ const HomeNavPill = ({ navSelect, setNavSelect }) => {
         className={classes.leftNav}
         onClick={() => setNavSelect(0)}
       >
-        <h2 style={navSelect ? {} : { color: 'black' }}>
+        <input
+          type='checkbox'
+          defaultChecked={!navSelect}
+          className={classes.leftCheck}
+        />
+        <h2>
           Sign In
         </h2>
       </div>
@@ -15,14 +20,13 @@ const HomeNavPill = ({ navSelect, setNavSelect }) => {
         className={classes.rightNav}
         onClick={() => setNavSelect(1)}
       >
-        <h2 style={navSelect ? { color: 'black' } : {}}>
-          Register
-        </h2>
+        <input
+          type='checkbox'
+          defaultChecked={navSelect}
+        />
+        <span className={classes.navSelected} />
+        <h2>Register</h2>
       </div>
-      <span
-        className={classes.navSelected}
-        style={navSelect ? { transform: 'translateX(100%)' } : {}}
-      />
   </div>
   )
 }
