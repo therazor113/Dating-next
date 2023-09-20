@@ -1,10 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-const NameField = ({ classes, inputValue, handleChange }) => {
+import classes from '../styles.module.scss'
+
+const NameField = ({ inputValue, handleChange }) => {
   return (
-    <div style={{ width: '100%' }}>
-      <FontAwesomeIcon icon={faUser} />
+    <div className={classes.inputContainer}>
+      <FontAwesomeIcon
+        icon={faUser}
+        className={classes.userIcon}
+      />
       <input
         autoFocus
         type='text'

@@ -2,15 +2,17 @@ import { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faLock, faUnlock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
+import classes from '../styles.module.scss'
 
-const RetypeField = ({ classes, inputValue, handleChange }) => {
+const RetypeField = ({ inputValue, handleChange }) => {
   const [lockIcon, setLockIcon] = useState(false)
   const [showRetype, setShowRetype] = useState(false)
 
   return (
-    <div>
+    <div className={classes.inputContainer}>
       <FontAwesomeIcon
         icon={showRetype ? faLockOpen : lockIcon ? faUnlock : faLock}
+        className={classes.lockIcon}
       />
       <input
         type={showRetype ? 'text' : 'password'}
@@ -25,6 +27,7 @@ const RetypeField = ({ classes, inputValue, handleChange }) => {
       <FontAwesomeIcon
         icon={showRetype ? faEye : faEyeSlash}
         onMouseDown={() => setShowRetype(!showRetype)}
+        className={classes.eyeIcon}
       />
     </div>
   )

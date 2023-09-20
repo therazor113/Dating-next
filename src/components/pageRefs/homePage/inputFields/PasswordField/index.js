@@ -2,15 +2,17 @@ import { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faLock, faLockOpen, faUnlock } from '@fortawesome/free-solid-svg-icons'
+import classes from '../styles.module.scss'
 
-const Passwordfield = ({ classes, inputValue, handleChange }) => {
+const Passwordfield = ({ inputValue, handleChange }) => {
   const [lockIcon, setLockIcon] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div>
+    <div className={classes.inputContainer}>
       <FontAwesomeIcon
         icon={showPassword ? faLockOpen : lockIcon ? faUnlock : faLock}
+        className={classes.lockIcon}
       />
       <input
         type={showPassword ? 'text' : 'password'}
@@ -25,6 +27,7 @@ const Passwordfield = ({ classes, inputValue, handleChange }) => {
       <FontAwesomeIcon
         icon={showPassword ? faEye : faEyeSlash}
         onMouseDown={() => setShowPassword(!showPassword)}
+        className={classes.eyeIcon}
       />
     </div>
   )
