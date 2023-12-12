@@ -3,6 +3,7 @@ import NameField from '../inputFields/NameField'
 import Passwordfield from '../inputFields/PasswordField'
 import RetypeField from '../inputFields/RetypeField'
 import InputErrorText from '../utilities/InputErrorText'
+import SubmitButton from '../inputFields/SubmitButton'
 import FormValidation from '../utilities/FormValidation'
 import useAPI from 'hooks/useAPI'
 
@@ -54,10 +55,7 @@ const RegisterCard = () => {
             handleChange={handleChange}
             error={validCheck.retype}
           />
-          <input
-            type='submit'
-            value={'Register'}
-          />
+          <SubmitButton title={'Register'} />
         </div>
       </form>
       <InputErrorText errorMessage={errorMessage} />

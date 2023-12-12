@@ -3,6 +3,7 @@ import NameField from '../inputFields/NameField'
 import Passwordfield from '../inputFields/PasswordField'
 import InputErrorText from '../utilities/InputErrorText'
 import FormValidation from '../utilities/FormValidation'
+import SubmitButton from '../inputFields/SubmitButton'
 import useAPI from 'hooks/useAPI'
 
 import classes from './styles.module.scss'
@@ -49,10 +50,7 @@ const SignInCard = () => {
             handleChange={handleChange}
             error={validCheck.password}
           />
-          <input
-            type='submit'
-            value={'Sign In'}
-          />
+          <SubmitButton title={'Sign In'} />
         </div>
       </form>
       <InputErrorText errorMessage={errorMessage} />
