@@ -2,22 +2,25 @@ import { useState } from 'react'
 import NameField from '../inputFields/NameField'
 import Passwordfield from '../inputFields/PasswordField'
 import RetypeField from '../inputFields/RetypeField'
+import InputErrorText from '../InputErrorText'
+import FormValidation from 'components/helpers/FormValidation'
 import useAPI from 'hooks/useAPI'
 
 import classes from './styles.module.scss'
 
 const RegisterCard = () => {
   const [inputValue, setInputValue] = useState({ name: '', password: '', retype: '' })
+  const [validCheck, setValidCheck] = useState({ name: true, password: true, retype: true })
+  const [errorMessage, setErrorMessage] = useState('')
   const [handleFetch] = useAPI()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    const inputValidity = FormValidation(inputValue, setValidCheck, setErrorMessage)
+    if (!inputValidity) return
+
     const path = 'http://localhost:4015/register'
-    if (inputValue.password !== inputValue.retype) {
-      console.log('passwords must match')
-      return
-    }
     const res = await handleFetch(
       path,
       'POST',
@@ -33,27 +36,33 @@ const RegisterCard = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} autoComplete='off'>
-      <div className={classes.cardContainer}>
-        <h2>Register</h2>
-        <NameField
-          inputValue={inputValue}
-          handleChange={handleChange}
-        />
-        <Passwordfield
-          inputValue={inputValue}
-          handleChange={handleChange}
-        />
-        <RetypeField
-          inputValue={inputValue}
-          handleChange={handleChange}
-        />
-        <input
-          type='submit'
-          value={'Register'}
-        />
-      </div>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit} autoComplete='off'>
+        <div className={classes.cardContainer}>
+          <h2>Register</h2>
+          <NameField
+            inputValue={inputValue}
+            handleChange={handleChange}
+            error={validCheck.name}
+          />
+          <Passwordfield
+            inputValue={inputValue}
+            handleChange={handleChange}
+            error={validCheck.password}
+          />
+          <RetypeField
+            inputValue={inputValue}
+            handleChange={handleChange}
+            error={validCheck.retype}
+          />
+          <input
+            type='submit'
+            value={'Register'}
+          />
+        </div>
+      </form>
+      <InputErrorText errorMessage={errorMessage} />
+    </div>
   )
 }
 
