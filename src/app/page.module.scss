@@ -2,6 +2,15 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 32rem;
+  gap: 2rem;
+  width: fit-content;
 }
