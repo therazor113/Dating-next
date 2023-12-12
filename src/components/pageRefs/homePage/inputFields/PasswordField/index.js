@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faLock, faLockOpen, faUnlock } from '@fortawesome/free-solid-svg-icons'
 import classes from '../styles.module.scss'
 
-const Passwordfield = ({ inputValue, handleChange }) => {
+const Passwordfield = ({ inputValue, handleChange, error }) => {
   const [lockIcon, setLockIcon] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
@@ -15,6 +15,7 @@ const Passwordfield = ({ inputValue, handleChange }) => {
         className={classes.lockIcon}
       />
       <input
+        style={error ? {} : { borderColor: 'red' }}
         type={showPassword ? 'text' : 'password'}
         name='password'
         aria-label='Password'

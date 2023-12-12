@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faLock, faUnlock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
 import classes from '../styles.module.scss'
 
-const RetypeField = ({ inputValue, handleChange }) => {
+const RetypeField = ({ inputValue, handleChange, error }) => {
   const [lockIcon, setLockIcon] = useState(false)
   const [showRetype, setShowRetype] = useState(false)
 
@@ -15,6 +15,7 @@ const RetypeField = ({ inputValue, handleChange }) => {
         className={classes.lockIcon}
       />
       <input
+        style={ error ? {} : { borderColor: 'red' }}
         type={showRetype ? 'text' : 'password'}
         name='retype'
         aria-label='Retype Password'

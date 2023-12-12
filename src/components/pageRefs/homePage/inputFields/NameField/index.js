@@ -3,7 +3,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 import classes from '../styles.module.scss'
 
-const NameField = ({ inputValue, handleChange }) => {
+const NameField = ({ inputValue, handleChange, error }) => {
   return (
     <div className={classes.inputContainer}>
       <FontAwesomeIcon
@@ -11,6 +11,7 @@ const NameField = ({ inputValue, handleChange }) => {
         className={classes.userIcon}
       />
       <input
+        style={ error ? {} : { borderColor: 'red' }}
         autoFocus
         type='text'
         name='name'
