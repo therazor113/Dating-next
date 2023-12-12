@@ -39,7 +39,6 @@ const RegisterCard = () => {
     <div>
       <form onSubmit={handleSubmit} autoComplete='off'>
         <div className={classes.cardContainer}>
-          <h2>Register</h2>
           <NameField
             inputValue={inputValue}
             handleChange={handleChange}

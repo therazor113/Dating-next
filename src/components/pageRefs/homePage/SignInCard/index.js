@@ -39,7 +39,6 @@ const SignInCard = () => {
     <div>
       <form onSubmit={handleSubmit} autoComplete='off'>
         <div className={classes.cardContainer}>
-          <h2>Sign in</h2>
           <NameField
             inputValue={inputValue}
             handleChange={handleChange}
