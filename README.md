@@ -4,17 +4,14 @@ A dating app built using Next.js - Early in development
 
 ## Instructions:
 
-### Additional Features:
-
-## Future Features:
-
 ## Setup:
 ```
 npm install
 ```
+## Init:
 ```
 npm run dev
 ```
-Requires a PostgreSQL Database to work as intended</br>
+Requires MongoDB and the [dating-express](https://github.com/therazor113/dating-express) app to work as intended</br>
 
 http://localhost:3000
