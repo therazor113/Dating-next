@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import HomeNavPill from 'components/pageRefs/homePage/NavPill'
-import SignInCard from 'components/pageRefs/homePage/SignInCard'
-import RegisterCard from 'components/pageRefs/homePage/RegisterCard'
+import HomeCards from 'components/pageRefs/homePage/HomeCards'
 
 import classes from './page.module.scss'
 
@@ -17,7 +16,7 @@ const Home = () => {
           navSelect={navSelect}
           setNavSelect={setNavSelect}
         />
-        {navSelect ? <RegisterCard /> : <SignInCard />}
+        <HomeCards navSelect={navSelect} />
       </div>
     </main>
   )

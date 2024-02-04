@@ -1,4 +1,4 @@
-const FormValidation = (inputValue, setValidCheck, setErrorMessage) => {
+const FormValidation = (inputValue, setValidCheck, setErrorMessage, navSelect) => {
   if (!inputValue.name && !inputValue.password) {
     setValidCheck({ name: false, password: false, retype: false })
     setErrorMessage('Name and password required')
@@ -11,17 +11,12 @@ const FormValidation = (inputValue, setValidCheck, setErrorMessage) => {
     setValidCheck({ name: true, password: false, retype: false })
     setErrorMessage('Password required')
     return false
-  } else if (inputValue.retype === undefined) {
-    setValidCheck({ name: true, password: true, retype: true })
-    setErrorMessage('')
-    return true
-  } else if (inputValue.password !== inputValue.retype) {
+  } else if (!!navSelect && inputValue.password !== inputValue.retype) {
     setValidCheck({ name: true, password: false, retype: false })
     setErrorMessage('Passwords must match')
     return false
   } else {
     setValidCheck({ name: true, password: true, retype: true })
-    setErrorMessage('')
     return true
   }
 }

@@ -1,33 +1,50 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NameField from '../inputFields/NameField'
 import Passwordfield from '../inputFields/PasswordField'
+import RetypeField from '../inputFields/RetypeField'
 import InputErrorText from '../utilities/InputErrorText'
-import FormValidation from '../utilities/FormValidation'
 import SubmitButton from '../inputFields/SubmitButton'
+import FormValidation from '../utilities/FormValidation'
 import useAPI from 'hooks/useAPI'
 
 import classes from './styles.module.scss'
 
-const SignInCard = () => {
-  const [inputValue, setInputValue] = useState({ name: '', password: '' })
-  const [validCheck, setValidCheck] = useState({ name: true, password: true })
+const HomeCards = ({ navSelect }) => {
+  const [inputValue, setInputValue] = useState({ name: '', password: '', retype: '' })
+  const [validCheck, setValidCheck] = useState({ name: true, password: true, retype: true })
   const [errorMessage, setErrorMessage] = useState('')
+  const [loadingState, setLoadingState] = useState(false)
   const [handleFetch] = useAPI()
+
+  useEffect(() => {
+    setErrorMessage('')
+  }, [navSelect])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setErrorMessage('')
 
-    const inputValidity = FormValidation(inputValue, setValidCheck, setErrorMessage)
+    const inputValidity = FormValidation(
+      inputValue,
+      setValidCheck,
+      setErrorMessage,
+      navSelect
+    )
     if (!inputValidity) return
 
-    const path = 'http://localhost:4015/signin'
+    setLoadingState(true)
+    const path = `http://localhost:4014/${!navSelect ? 'signin' : 'register'}`
     const res = await handleFetch(
       path,
       'POST',
       { name: inputValue.name, password: inputValue.password }
     )
+
+    if (!res) {
+      setErrorMessage('Error')
+    }
     console.log(res)
+    setLoadingState(false)
   }
 
   const handleChange = (e) => {
@@ -50,7 +67,17 @@ const SignInCard = () => {
             handleChange={handleChange}
             error={validCheck.password}
           />
-          <SubmitButton title={'Sign In'} />
+          {!!navSelect &&
+            <RetypeField
+              inputValue={inputValue}
+              handleChange={handleChange}
+              error={validCheck.retype}
+            />
+          }
+          <SubmitButton
+            title={!navSelect ? 'Sign In' : 'Register'}
+            loadingState={loadingState}
+          />
         </div>
       </form>
       <InputErrorText errorMessage={errorMessage} />
@@ -58,4 +85,4 @@ const SignInCard = () => {
   )
 }
 
-export default SignInCard
+export default HomeCards
