@@ -33,7 +33,7 @@ const HomeCards = ({ navSelect }) => {
     if (!inputValidity) return
 
     setLoadingState(true)
-    const path = `http://localhost:4014/${!navSelect ? 'signin' : 'register'}`
+    const path = `http://localhost:4015/${!navSelect ? 'signin' : 'register'}`
     const res = await handleFetch(
       path,
       'POST',
