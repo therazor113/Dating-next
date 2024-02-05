@@ -33,10 +33,17 @@
     }
     h2 {
       z-index: 1;
+      white-space: nowrap;
       color: rgba(235, 235, 255, 0.85);
       font-weight: 500;
       padding: 1rem;
       user-select: none;
     }
+    @media (max-width: 550px) {
+      width: 100%;
+    }
+  }
+  @media (max-width: 550px) {
+    width: 100%;
   }
 }
